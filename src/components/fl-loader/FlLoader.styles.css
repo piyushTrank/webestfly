@@ -1,0 +1,20 @@
+.cm-fl-loader-wrapper {
+  max-width: 450px;
+  padding: 30px 15px;
+  border-radius: 15px;
+  margin: 0 auto;
+}
+
+.cm-fl-loader-wrapper i {
+  padding-right: 5px;
+  color: var(--secCol);
+}
+
+.cm-fl-loader-wrapper h3 {
+  color: var(--secCol2);
+  margin-bottom: 10px;
+}
+
+.cm-fl-loader-wrapper p {
+  margin-bottom: 20px;
+}

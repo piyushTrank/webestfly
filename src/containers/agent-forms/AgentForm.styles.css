@@ -1,0 +1,109 @@
+/* Form Styles Start */
+
+.cm-agent-form-container .cm-form-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 30px auto;
+}
+
+.cm-agent-form-container .cm-form-field-half {
+  align-items: flex-start;
+}
+
+.cm-agent-form-container .cm-form-field {
+  margin-bottom: 35px;
+}
+
+.cm-agent-form-container .cm-form-field > label {
+  font-weight: 500;
+}
+
+.cm-agent-form-container .cm-form-field-container {
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  margin-top: 30px;
+}
+
+.cm-agent-form-container .cm-form-container .cm-radio-field-item {
+  display: flex;
+  width: 25%;
+  justify-content: flex-start;
+  font-size: 18px;
+}
+
+.cm-agent-form-container .cm-radio-field-item input[type="radio"] {
+  display: inline;
+  width: auto;
+}
+
+.cm-agent-form-container .cm-radio-field-item span {
+  display: block;
+  font-weight: 700;
+  padding-left: 15px;
+}
+
+.cm-agent-form-container .cm-radio-field-grp {
+  margin-top: 10px;
+}
+
+.cm-agent-form-container .cm-form-field-container > h2 {
+  margin-bottom: 40px;
+}
+
+.cm-agent-form-container .cm-helper-txt {
+  display: block;
+  margin-top: 5px;
+  color: #333;
+}
+
+.cm-agent-form-container .cm-form-field-submit input[type="submit"] {
+  padding: 15px;
+  font-weight: 700;
+  font-family: "Open Sans", sans-serif;
+  border: none;
+  font-size: 18px;
+  border-radius: 25px;
+}
+
+.cm-agent-form-container .cm-repeater-grp .cm-form-field {
+  margin-bottom: 15px;
+}
+
+.cm-agent-form-container .cm-repeater-content .cm-del-btn {
+  background-color: red;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  line-height: 1;
+  position: absolute;
+  right: 0;
+  bottom: 5px;
+}
+
+.cm-agent-form-container .cm-repeater-content .cm-del-btn:after {
+  content: "x";
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  position: relative;
+  top: -2px;
+}
+
+.cm-agent-form-container .cm-repeater-btn button {
+  padding: 10px 15px;
+  border-radius: 15px;
+  border: none;
+}
+
+.cm-agent-form-container .cm-repeated-pass-field input {
+  width: calc(100% - 45px);
+}
+
+.cm-agent-form-container .cm-form-field img {
+  max-width: 100%;
+  margin-top: 10px;
+}
+
+/* Form Styles End */

@@ -1,0 +1,429 @@
+.cm-homepage-banner-container {
+  background-image: url("../../assets/images/flight/Ellipse 2653.png");
+  background-image: url("../../assets/images/flight/air_bg.jpg");
+  padding: 20px 0;
+  background-position: top;
+  min-height: 500px;
+  background-color: #f1f2f6;
+}
+
+.cm-homepage-banner-container h1 {
+  font-size: 30px;
+  font-weight: 700;
+  padding: 5px 35px;
+  display: inline-block;
+  border-radius: 15px;
+}
+
+.cm-banner-save-deal-wrapper .cm-top-head h5 {
+  font-size: 18px;
+}
+
+.cm-banner-save-deal-wrapper .cm-top-head h5 a {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.cm-home-trav-container .cm-trav-img-item img {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.cm-banner-save-deal-container {
+  margin-top: 30px;
+  padding-top: 0;
+}
+
+.cm-banner-save-deal-container .cm-banner-save-deal-wrapper {
+  padding: 10px 0;
+  border-radius: 15px;
+}
+
+.cm-banner-save-deal-wrapper .cm-top-head img {
+  padding-right: 10px;
+}
+
+.cm-banner-save-deal-wrapper .cm-top-head {
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.cm-banner-save-deal-wrapper .cm-deal-item {
+  padding: 20px 15px 10px;
+  width: calc(33.33% - 30px);
+  margin: 0 15px;
+}
+
+.cm-banner-save-deal-wrapper .cm-deal-item + .cm-deal-item {
+  border-left: 1px solid #ccc;
+}
+
+.cm-banner-save-deal-wrapper .cm-middle-info {
+  border-top: 1px solid #ccc;
+}
+
+.cm-banner-save-deal-wrapper .cm-deal-item h3 {
+  font-size: 30px;
+}
+
+.cm-banner-save-deal-wrapper .cm-deal-item h3 sup {
+  font-size: 14px;
+}
+
+.cm-banner-save-deal-wrapper .cm-deal-item > p:first-child {
+  font-weight: 600;
+}
+
+.cm-banner-save-deal-wrapper .cm-deal-item > span {
+  color: #999;
+  font-size: 14px;
+}
+
+.cm-home-feat-container {
+  background-color: #f1f2f6;
+}
+
+.cm-home-feat-item {
+  width: calc(25% - 30px);
+  margin: 0 15px;
+}
+
+.cm-home-feat-item i {
+  color: var(--tealCol);
+  font-size: 24px;
+}
+
+.cm-home-feat-item .cm-feat-header {
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.cm-home-feat-item .cm-feat-header > p {
+  font-size: 22px;
+  padding-left: 15px;
+  font-weight: 700;
+}
+
+.cm-home-guidelines-container .cm-left-col {
+  width: calc(50% - 30px);
+  margin: 0 15px;
+  background: #667db6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #667db6,
+    #0082c8,
+    #0082c8,
+    #667db6
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #667db6,
+    #0082c8,
+    #0082c8,
+    #667db6
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  border-radius: 15px 15px 0 15px;
+}
+
+.cm-home-guidelines-container .cm-right-col {
+  width: calc(50% - 30px);
+  margin: 0 15px;
+}
+
+.cm-home-guidelines-container .cm-phone-img {
+  font-size: 22px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+}
+
+.cm-home-guidelines-container .cm-content {
+  width: calc(100% - 50px);
+  padding: 28px 15px;
+  padding-right: 100px;
+}
+
+.cm-home-guidelines-container .cm-left-col .cm-girl-img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.cm-home-guidelines-container .cm-content > p {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.cm-home-guidelines-container .cm-content a {
+  font-size: 22px;
+  font-weight: 700;
+  padding: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.cm-home-guide-slider {
+  border-radius: 15px;
+  padding: 15px 30px;
+}
+
+.cm-home-guide-slider .slick-arrow:before {
+  color: var(--secCol);
+}
+
+.cm-home-guide-slider .slick-prev {
+  left: 8px;
+}
+
+.cm-home-guide-slider .slick-next {
+  right: 8px;
+}
+
+.cm-home-guide-slider .cm-home-guide-slide {
+  padding: 15px;
+}
+
+.cm-exp-item {
+  width: calc(33.33% - 30px);
+  border-radius: 10px;
+  margin: 0 15px 25px;
+  overflow: hidden;
+  position: relative;
+}
+
+.cm-exp-item .cm-exp-bg {
+  height: 250px;
+}
+
+.cm-exp-item .cm-content {
+  padding: 10px;
+  width: 100%;
+}
+
+.cm-exp-item .cm-content h4 {
+  font-size: 20px;
+}
+
+.cm-origin-wrap .cm-origin-header {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cm-origin-wrap .cm-origin-content {
+  border-top: 1px solid #ccc;
+}
+
+.cm-origin-wrap .cm-origin-content li {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 1200px) {
+  .cm-fl-search-form {
+    width: calc(100% - 30px);
+    margin-top: 20px;
+  }
+
+  .cm-homepage-banner-container .cm-page-center {
+    padding-left: 15px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .cm-fl-search-form > div + div {
+    flex-wrap: wrap;
+  }
+
+  .cm-fl-search-form .cm-mid-wrap .cm-form-field {
+    width: 50%;
+  }
+
+  .cm-fl-search-form .cm-mid-wrap .cm-srch-inp {
+    margin-bottom: 15px;
+  }
+
+  .cm-fl-search-form .cm-bottom-wrap .cm-fl-search-btn {
+    width: 100%;
+    flex: auto;
+    margin-top: 15px;
+  }
+
+  .cm-homepage-banner-container {
+    min-height: 600px;
+  }
+
+  .cm-home-trav-container .cm-left-col,
+  .cm-home-trav-container .cm-right-col {
+    width: 100%;
+  }
+
+  .cm-home-trav-container .cm-page-center {
+    flex-wrap: wrap;
+  }
+
+  .cm-home-feat-item {
+    width: calc(50% - 30px);
+    margin-bottom: 20px;
+  }
+
+  .cm-home-feat-container .cm-page-center {
+    flex-wrap: wrap;
+  }
+
+  .cm-home-feat-item .cm-feat-header > p {
+    font-size: 18px;
+  }
+
+  .cm-exp-item {
+    width: calc(50% - 30px);
+  }
+
+  .cm-home-guidelines-container .cm-left-col,
+  .cm-home-guidelines-container .cm-right-col {
+    width: 100%;
+  }
+
+  .cm-home-guidelines-container .cm-right-col {
+    margin-top: 30px;
+    padding: 0 15px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .cm-homepage-banner-container {
+    background-image: none;
+    background-color: var(--primCol);
+  }
+
+  .cm-homepage-banner-container .cm-page-center {
+    padding: 0 15px;
+  }
+
+  .cm-homepage-banner-container {
+    padding: 30px 0;
+    min-height: auto;
+  }
+
+  .cm-fl-search-form {
+    position: relative;
+    margin-top: 30px;
+    padding: 20px 15px;
+    left: unset;
+    bottom: unset;
+    width: 100%;
+  }
+
+  .cm-fl-search-form .cm-mid-wrap .cm-srch-inp,
+  .cm-fl-search-form .cm-mid-wrap .cm-form-field {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .cm-homepage-banner-container h1 {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .cm-homepage-banner-container p {
+    text-align: center;
+  }
+
+  .cm-home-feat-item {
+    width: calc(100% - 30px);
+  }
+
+  .cm-exp-item {
+    min-height: 230px;
+  }
+
+  .cm-homepage-banner-container .cm-srch-inp p {
+    text-align: left;
+  }
+
+  .cm-banner-save-deal-wrapper .cm-top-head {
+    flex-flow: column;
+  }
+
+  .cm-banner-save-deal-wrapper .cm-top-head h5 {
+    margin-top: 10px;
+  }
+
+  .cm-banner-save-deal-wrapper .cm-deal-item {
+    width: 100%;
+    margin: 0;
+  }
+
+  .cm-banner-save-deal-wrapper .cm-deal-item + .cm-deal-item {
+    border-left: none;
+    border-top: 1px solid #ccc;
+  }
+
+  .cm-banner-save-deal-wrapper .cm-top-head h5 a {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .cm-header-op .cm-header-phone {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .cm-header-op .cm-sec-menu {
+    margin-top: 25px;
+  }
+
+  .cm-fl-search-form .cm-bottom-wrap {
+    margin-top: 0;
+  }
+
+  .cm-fl-search-form .cm-bottom-wrap > div {
+    width: 100%;
+  }
+
+  .cm-fl-search-form .cm-bottom-wrap .cm-class-select {
+    margin-top: 10px;
+  }
+
+  .cm-home-guidelines-container .cm-left-col .cm-girl-img {
+    display: none;
+  }
+
+  .cm-home-guidelines-container .cm-content {
+    padding: 28px 15px;
+  }
+
+  .cm-home-guidelines-container .cm-left-col {
+    border-radius: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .cm-home-trav-container .cm-trav-img-item {
+    width: 50%;
+  }
+
+  .cm-section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .cm-exp-item {
+    width: 100%;
+  }
+
+  .cm-home-guidelines-container .cm-content a {
+    font-size: 18px;
+  }
+}

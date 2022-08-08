@@ -1,0 +1,167 @@
+.cm-fl-search-form input {
+  color: var(--secCol);
+}
+
+.cm-fl-search-form {
+  padding: 15px;
+  margin-top: 25px;
+  width: 1200px;
+  border-radius: 20px;
+  text-align: left;
+}
+
+.cm-fl-search-form:after {
+  right: -20px;
+  left: unset;
+}
+
+.cm-fl-search-form > div + div {
+  margin-top: 10px;
+}
+
+.cm-fl-search-form .cm-radio-field label + label {
+  margin-left: 30px;
+}
+
+.cm-fl-search-form .cm-radio-field label span {
+  padding-left: 6px;
+  font-weight: 600;
+  user-select: none;
+}
+
+.cm-fl-search-form .cm-mid-wrap input {
+  border-radius: 15px;
+  padding-left: 30px;
+}
+
+.cm-fl-search-form .cm-mid-wrap .cm-form-field {
+  width: 20%;
+}
+
+.cm-fl-search-form .cm-mid-wrap .cm-srch-inp {
+  width: 30%;
+}
+
+.cm-fl-search-form .cm-mid-wrap label {
+  margin-top: 5px;
+  display: block;
+}
+
+.cm-fl-search-form .cm-form-field {
+  margin-bottom: 0;
+}
+
+.cm-trav-wrap-sb-active .cm-sb-ul {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.cm-search-inputs .cm-sb-ul,
+.cm-fl-class-sb-active .cm-sb-ul,
+.cm-trav-wrap-sb-active .cm-sb-ul {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.cm-trav-wrap ul li {
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cm-trav-wrap ul li button {
+  background-color: #eee;
+  border: none;
+  width: 35px;
+  height: 35px;
+  font-size: 19px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: block;
+}
+
+.cm-trav-wrap ul li span {
+  display: block;
+  width: calc(100% - 70px);
+  padding: 0 10px;
+  color: var(--secCol);
+  text-align: center;
+  font-weight: 600;
+}
+
+.cm-search-inputs ul li,
+.cm-fl-class-select ul li {
+  padding: 10px 15px;
+}
+
+.cm-search-inputs ul li + li,
+.cm-fl-class-select ul li + li {
+  border-top: 1px solid #f2f2f2;
+}
+
+.cm-date-selector i,
+.cm-search-inputs .cm-content i {
+  position: absolute;
+  top: calc(50% - 8px);
+  left: 10px;
+  z-index: 1;
+}
+
+.cm-search-inputs .cm-sb-ul {
+  width: 100%;
+}
+
+.cm-fl-search-form .cm-bottom-wrap > div {
+  flex: initial;
+}
+
+.cm-fl-search-form .cm-bottom-wrap .cm-fl-search-btn {
+  flex: 1;
+}
+
+.cm-fl-search-form .cm-fl-search-btn button {
+  width: 100%;
+}
+
+.cm-fl-search-form .cm-bottom-wrap {
+  align-items: center;
+}
+
+.cm-fl-search-btn button {
+  margin-top: 0;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 15px;
+}
+
+.cm-datepicker-disabled {
+  pointer-events: none;
+}
+
+.cm-datepicker-disabled input[type="text"] {
+  background-color: #ccc;
+}
+
+.cm-result-list > li > p > span {
+  display: block;
+}
+
+.cm-result-list > li > p > span:first-child {
+  font-size: 13px;
+  color: #666;
+}
+
+.cm-result-list > li > span {
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+  padding-left: 5px;
+}
+
+.cm-result-list > li > p > span + span {
+  font-weight: 600;
+}
