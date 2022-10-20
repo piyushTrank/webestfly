@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import "./Header.styles.css";
 import logo from "../../assets/images/flight/trian_fly_logo.png";
@@ -8,6 +9,7 @@ import direction from "../../assets/images/flight/direction.png";
 import { phoneNum } from "../../utils/globalVars";
 
 const Header = () => {
+  // const phoneNum = useSelector((state) => state.misc.contact);
   const [menuStatus, setMenuStatus] = React.useState(false);
 
   const handleMenu = () => {
@@ -66,22 +68,28 @@ const Header = () => {
               <li className="cm-flex-type-2 cm-support-menu">
                 <img src={support} alt="Support" />
                 <span>
-                  <a href={`tel:${phoneNum.label}`}>Support</a>
+                  <a href={`tel:${!!phoneNum ? phoneNum.label : ""}`}>
+                    Support
+                  </a>
                 </span>
               </li>
-              <li className="cm-flex-type-2 cm-header-phone">
-                <i className="fa-solid fa-phone cm-sec-bg cm-white-col cm-flex-type-2"></i>
-                <a href={`tel:${phoneNum.label}`} className="cm-prim-col">
-                  {phoneNum.label}
-                </a>
-              </li>
+              {!!phoneNum ? (
+                <li className="cm-flex-type-2 cm-header-phone">
+                  <i className="fa-solid fa-phone cm-sec-bg cm-white-col cm-flex-type-2"></i>
+                  <a href={`tel:${phoneNum.value}`} className="cm-prim-col">
+                    {phoneNum.label}
+                  </a>
+                </li>
+              ) : null}
             </ul>
           </div>
           <div className="cm-flex-type-2 cm-header-phone-mob cm-lr-pad">
             <i className="fa-solid fa-phone cm-sec-bg cm-white-col cm-flex-type-2"></i>
-            <a href={`tel:${phoneNum.label}`} className="cm-prim-col">
-              {phoneNum.label}
-            </a>
+            {!!phoneNum ? (
+              <a href={`tel:${phoneNum.value}`} className="cm-prim-col">
+                {phoneNum.label}
+              </a>
+            ) : null}
           </div>
         </div>
       </div>

@@ -1,11 +1,14 @@
 import React from "react";
 import moment from "moment";
+import { useSelector } from "react-redux";
 
 import { phoneNum } from "../../utils/globalVars";
 import FlightBookForm from "../../components/flight-book-form/FlightBookForm.component";
 import { getDuration } from "../../utils/utilFn";
 
 const BookTicketsContainer = ({ data }) => {
+  // const phoneNum = useSelector((state) => state.misc.contact);
+
   const getAirportNames = (iataCode) => {
     if (!!data.airportNames)
       return `${data.airportNames[iataCode].code} | ${data.airportNames[iataCode].name}, ${data.airportNames[iataCode].country}`;
@@ -86,9 +89,11 @@ const BookTicketsContainer = ({ data }) => {
                 customize your vacation hassle-free and enjoy your time away!
               </p>
               <h5>Call Us</h5>
-              <a className="cm-sec-col2" href={`tel: ${phoneNum.value}`}>
-                {phoneNum.label}
-              </a>
+              {!!phoneNum ? (
+                <a className="cm-sec-col2" href={`tel: ${phoneNum.value}`}>
+                  {phoneNum.label}
+                </a>
+              ) : null}
             </div>
           </div>
         </div>

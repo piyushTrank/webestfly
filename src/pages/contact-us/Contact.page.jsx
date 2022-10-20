@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { showToast } from "../../redux/notifications/notifications.action";
 import { phoneNum } from "../../utils/globalVars";
 
@@ -15,6 +15,7 @@ const initial_state = {
 
 const ContactPage = () => {
   const dispatch = useDispatch();
+  // const phoneNum = useSelector((state) => state.misc.contact);
   const [formVal, setFormVal] = React.useState(initial_state);
 
   const handleChange = (e, fieldName) => {
@@ -62,12 +63,14 @@ const ContactPage = () => {
         <div className="cm-page-center">
           <div className="cm-left-col cm-lr-pad">
             <ul className="cm-menu-ul cm-flex-type-2 cm-flex-align-in">
-              <li className="box-shadow-2">
-                <i className="fa-solid cm-white-col fa-phone cm-flex-type-2 cm-prim-bg"></i>
-                <span>
-                  <a href={phoneNum.value}>{phoneNum.label}</a>
-                </span>
-              </li>
+              {!!phoneNum ? (
+                <li className="box-shadow-2">
+                  <i className="fa-solid cm-white-col fa-phone cm-flex-type-2 cm-prim-bg"></i>
+                  <span>
+                    <a href={`tel:${phoneNum.value}`}>{phoneNum.label}</a>
+                  </span>
+                </li>
+              ) : null}
               <li className="box-shadow-2">
                 <i className="fa-solid cm-white-col fa-envelope cm-flex-type-2 cm-prim-bg"></i>
                 <span>

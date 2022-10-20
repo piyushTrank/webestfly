@@ -1,14 +1,17 @@
 import axios from "axios";
 import React from "react";
+import moment from "moment";
 import { useDispatch } from "react-redux";
 import { showToast } from "../../redux/notifications/notifications.action";
 import { api_url_mail } from "../../utils/apiInfo";
+import { phoneNum } from "../../utils/globalVars";
 import FutureCreditPdf from "../agent-pdf/FutureCreditPdf.component";
 import PDFLink from "../agent-pdf/PdfLink.component";
+import DatePickerComp from "../date-picker/DatePickerComp.component";
 
 const initial_state = {
   bookingReference: "",
-  tfn: "",
+  tfn: phoneNum.label,
   customerName: "",
   totalPrice: "",
   priceField1: "",
@@ -19,8 +22,13 @@ const initial_state = {
   paymentMode: "",
   lastDigits: "",
   airlinePenalty: "",
-  cardHolder: "",
   address: "",
+  cardHolder: "",
+  cardType: "",
+  cardExp: "",
+  cardBillAdd: "",
+  cardBillPhone: "",
+  cardEmail: "",
   itinerary: null,
   itinerary_url: "",
   bookedThrough: "",
@@ -50,7 +58,6 @@ const FutureCreditForm = ({ bookData }) => {
 
   const handlePassInp = (e) => {
     const passIndex = e.target.id.split("pass-")[1];
-    // console.log("Tetsing", passIndex);
 
     setFormVal((prevState) => {
       const newArr = prevState.passenger_info.slice();
@@ -79,19 +86,37 @@ const FutureCreditForm = ({ bookData }) => {
     });
   };
 
+  const handleDateChange = (dateObj) => {
+    const passIndex = dateObj.id;
+
+    setFormVal((prevState) => {
+      const newArr = prevState.passenger_info.slice();
+      newArr[passIndex - 1].dob = moment(dateObj.date).format("DD/MM/YYYY");
+
+      return {
+        ...prevState,
+        passenger_info: newArr,
+      };
+    });
+  };
+
   const renderFields = () => {
-    // console.log("formVal.passenger_info", formVal.passenger_info);
-    // return null;
     return formVal.passenger_info.map((el) => (
-      <div className="cm-form-field" key={el.id}>
-        <label>Passenger's Name</label>
-        <input
-          type="text"
-          id={"pass-" + el.id}
-          name="passengerName"
-          value={el.value}
-          onChange={handlePassInp}
-        />
+      <div className="cm-form-field-half cm-flex-type-2">
+        <div className="cm-form-field" key={el.id}>
+          <label>Passenger's Name</label>
+          <input
+            type="text"
+            id={"pass-" + el.id}
+            name="passengerName"
+            value={el.value}
+            onChange={handlePassInp}
+          />
+        </div>
+        <div className="cm-form-field" key={"dob-" + el.id}>
+          <label>Date of Birth</label>
+          <DatePickerComp handleDateChange={handleDateChange} elId={el.id} />
+        </div>
       </div>
     ));
   };
@@ -116,13 +141,9 @@ const FutureCreditForm = ({ bookData }) => {
       "tfn",
       "customerName",
       "totalPrice",
-      "priceField1",
-      "priceField2",
-      "priceField3",
       "airlinesName",
       "paymentMode",
       "lastDigits",
-      "airlinePenalty",
       "airTravelComplete",
       "cardHolder",
       "address",
@@ -233,6 +254,7 @@ const FutureCreditForm = ({ bookData }) => {
             name="tfn"
             onChange={handleInpChange}
             value={formVal.tfn}
+            readOnly={true}
           />
         </div>
       </div>
@@ -259,7 +281,7 @@ const FutureCreditForm = ({ bookData }) => {
       </div>
       <div className="cm-form-field-half cm-flex-type-2">
         <div className="cm-form-field">
-          <label>Price per passenger (Including taxes & fees)*</label>
+          <label>Price per passenger (Including taxes & fees)</label>
           <input
             type="text"
             name="priceField1"
@@ -269,19 +291,19 @@ const FutureCreditForm = ({ bookData }) => {
           <span className="cm-helper-txt">Ex: 298.89</span>
         </div>
         <div className="cm-form-field">
-          <label>Charge on Card Statement*</label>
+          <label>Charge on Card Statement</label>
           <input
             type="text"
             name="priceField2"
             onChange={handleInpChange}
             value={formVal.priceField2}
           />
-          <span className="cm-helper-txt">Ex: 220</span>
+          <span className="cm-helper-txt">Ex: 220.00</span>
         </div>
       </div>
       <div className="cm-form-field-half cm-flex-type-2">
         <div className="cm-form-field">
-          <label>Credit Amount*</label>
+          <label>Credit Amount</label>
           <input
             type="text"
             name="priceField3"
@@ -300,6 +322,19 @@ const FutureCreditForm = ({ bookData }) => {
           />
         </div>
       </div>
+
+      <div className="cm-form-field cm-checkbox-field cm-flex">
+        <input
+          type="checkbox"
+          name="showOnePayment"
+          onChange={(e) =>
+            setFormVal({ ...formVal, showOnePayment: e.target.checked })
+          }
+          value={formVal.showOnePayment}
+        />
+        <label>Show "Total price" Only</label>
+      </div>
+
       <div className="cm-form-field-half cm-flex-type-2">
         <div className="cm-form-field">
           <label>Paying Through*</label>
@@ -324,7 +359,7 @@ const FutureCreditForm = ({ bookData }) => {
       </div>
       <div className="cm-form-field-half cm-flex-type-2">
         <div className="cm-form-field">
-          <label>Airline Penalty*</label>
+          <label>Airline Penalty</label>
           <input
             type="text"
             name="airlinePenalty"
@@ -344,6 +379,19 @@ const FutureCreditForm = ({ bookData }) => {
           <span className="cm-helper-txt">To open calendar click on icon</span>
         </div>
       </div>
+
+      <div className="cm-repeater-grp cm-form-field">
+        <div className="cm-repeater-content">{renderFields()}</div>
+        <div className="cm-repeater-btn cm-pass-repeat-btn">
+          <button
+            className="cm-btn cm-sec-bg cm-white-col"
+            onClick={addMorePassenger}
+          >
+            Add More Passenger
+          </button>
+        </div>
+      </div>
+
       <div className="cm-form-field-half cm-flex-type-2">
         <div className="cm-form-field">
           <label>Card Holder*</label>
@@ -354,24 +402,58 @@ const FutureCreditForm = ({ bookData }) => {
             value={formVal.cardHolder}
           />
         </div>
-        <div className="cm-repeater-grp cm-form-field">
-          <div className="cm-repeater-content">
-            {/* <div className="cm-form-field">
-              <label>Passenger's Name</label>
-              <input type="text" name="passengerName[]" />
-            </div> */}
-            {renderFields()}
-          </div>
-          <div className="cm-repeater-btn cm-pass-repeat-btn">
-            <button
-              className="cm-btn cm-sec-bg cm-white-col"
-              onClick={addMorePassenger}
-            >
-              Add More Passenger
-            </button>
-          </div>
+        <div className="cm-form-field">
+          <label>Card Type*</label>
+          <input
+            type="text"
+            name="cardType"
+            onChange={handleInpChange}
+            value={formVal.cardType}
+          />
         </div>
       </div>
+      <div className="cm-form-field-half cm-flex-type-2">
+        <div className="cm-form-field">
+          <label>Card Expiry*</label>
+          <input
+            type="text"
+            name="cardExp"
+            onChange={handleInpChange}
+            value={formVal.cardExp}
+          />
+        </div>
+        <div className="cm-form-field">
+          <label>Card Billing Address*</label>
+          <input
+            type="text"
+            name="cardBillAdd"
+            onChange={handleInpChange}
+            value={formVal.cardBillAdd}
+          />
+        </div>
+      </div>
+
+      <div className="cm-form-field-half cm-flex-type-2">
+        <div className="cm-form-field">
+          <label>Card Billing Phone*</label>
+          <input
+            type="text"
+            name="cardBillPhone"
+            onChange={handleInpChange}
+            value={formVal.cardBillPhone}
+          />
+        </div>
+        <div className="cm-form-field">
+          <label>Card Email*</label>
+          <input
+            type="text"
+            name="cardEmail"
+            onChange={handleInpChange}
+            value={formVal.cardEmail}
+          />
+        </div>
+      </div>
+
       <div className="cm-form-field-full">
         <div className="cm-form-field">
           <label>Address*</label>

@@ -448,6 +448,20 @@ h4 {
   text-align: center;
 }
 
+.cm-checkbox-field {
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.cm-checkbox-field input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+}
+
+.cm-checkbox-field label {
+  padding-left: 15px;
+}
+
 .cm-form-field select,
 .cm-form-field input,
 .cm-form-field textarea {

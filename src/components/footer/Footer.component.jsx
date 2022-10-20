@@ -2,20 +2,26 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import logo from "../../assets/images/flight/trian_fly_logo.png";
-import { phoneNum } from "../../utils/globalVars";
+import { useSelector } from "react-redux";
+// import { phoneNum } from "../../utils/globalVars";
 
 import "./Footer.styles.css";
+import { phoneNum } from "../../utils/globalVars";
 
 const Footer = () => {
+  // const phoneNum = useSelector((state) => state.misc.contact);
+
   return (
     <footer className="cm-footer-container">
       <div className="cm-fixed-footer-cta cm-txt-center cm-white-bg box-shadow-2 cm-wt-600 cm-prim-bg cm-white-col">
         <p>
           Save Instantly on Unpublished Deals - CALL NOW{" "}
-          <a href={`tel:${phoneNum.value}`} className="cm-gray-bg cm-sec-col">
-            <i className="fa-solid fa-phone"></i>
-            {phoneNum.label}
-          </a>
+          {!!phoneNum && (
+            <a href={`tel:${phoneNum.value}`} className="cm-gray-bg cm-sec-col">
+              <i className="fa-solid fa-phone"></i>
+              {phoneNum.label}
+            </a>
+          )}
         </p>
       </div>
       <div className="cm-footer-top">
@@ -48,12 +54,14 @@ const Footer = () => {
           <div className="cm-footer-col cm-wd-25 cm-lr-pad cm-footer-col3">
             <h3>Reach us at</h3>
             <ul className="cm-menu-ul">
-              <li>
-                <a href={`tel:${phoneNum.value}`}>
-                  <i className="fa-solid fa-phone"></i>
-                  <span>{phoneNum.label}</span>
-                </a>
-              </li>
+              {!!phoneNum && (
+                <li>
+                  <a href={`tel:${phoneNum.value}`}>
+                    <i className="fa-solid fa-phone"></i>
+                    <span>{phoneNum.label}</span>
+                  </a>
+                </li>
+              )}
               <li>
                 <a href="mailto:contact@webestfly.com">
                   <i className="fa-solid fa-envelope"></i>

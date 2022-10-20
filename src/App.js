@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import HomePage from "./pages/home/HomePage.page";
 import NotFoundPage from "./pages/error/NotFound.page";
 import CustomToast from "./components/toast/CustomToast.component";
@@ -15,8 +16,15 @@ import ContactPage from "./pages/contact-us/Contact.page";
 import AboutPage from "./pages/about-us/About.page";
 import PackagesPage from "./pages/packages/Packages.page";
 import AgentDashPage from "./pages/agent-dash/AgentDash.page";
+import { getContactNum } from "./redux/misc/misc.action";
 
 function App() {
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(getContactNum());
+  }, []);
+
   return (
     <div className="App">
       <BrowserRouter>

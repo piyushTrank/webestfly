@@ -1,14 +1,17 @@
 import axios from "axios";
 import React from "react";
+import moment from "moment";
+import { phoneNum } from "../../utils/globalVars";
 import { useDispatch } from "react-redux";
 import { showToast } from "../../redux/notifications/notifications.action";
 import { api_url_mail } from "../../utils/apiInfo";
 import CancelRefundPdf from "../agent-pdf/CancelRefundPdf.component";
 import PDFLink from "../agent-pdf/PdfLink.component";
+import DatePickerComp from "../date-picker/DatePickerComp.component";
 
 const initial_state = {
   bookingReference: "",
-  tfn: "",
+  tfn: phoneNum.label,
   customerName: "",
   totalPrice: "",
   priceField1: "",
@@ -22,10 +25,12 @@ const initial_state = {
   bookedThrough: "",
   agentName: "",
   agentExt: "",
+  showOnePayment: false,
   passenger_info: [
     {
       id: 1,
       value: "",
+      dob: new Date(),
     },
   ],
   loading: false,
@@ -58,6 +63,20 @@ const CancelRefundForm = ({ bookData }) => {
     });
   };
 
+  const handleDateChange = (dateObj) => {
+    const passIndex = dateObj.id;
+
+    setFormVal((prevState) => {
+      const newArr = prevState.passenger_info.slice();
+      newArr[passIndex - 1].dob = moment(dateObj.date).format("DD/MM/YYYY");
+
+      return {
+        ...prevState,
+        passenger_info: newArr,
+      };
+    });
+  };
+
   const addMorePassenger = () => {
     let lastElemId =
       formVal.passenger_info[formVal.passenger_info.length - 1].id;
@@ -75,18 +94,22 @@ const CancelRefundForm = ({ bookData }) => {
   };
 
   const renderFields = () => {
-    // console.log("formVal.passenger_info", formVal.passenger_info);
-    // return null;
     return formVal.passenger_info.map((el) => (
-      <div className="cm-form-field" key={el.id}>
-        <label>Passenger's Name</label>
-        <input
-          type="text"
-          id={"pass-" + el.id}
-          name="passengerName"
-          value={el.value}
-          onChange={handlePassInp}
-        />
+      <div className="cm-form-field-half cm-flex-type-2">
+        <div className="cm-form-field" key={el.id}>
+          <label>Passenger's Name</label>
+          <input
+            type="text"
+            id={"pass-" + el.id}
+            name="passengerName"
+            value={el.value}
+            onChange={handlePassInp}
+          />
+        </div>
+        <div className="cm-form-field" key={"dob-" + el.id}>
+          <label>Date of Birth</label>
+          <DatePickerComp handleDateChange={handleDateChange} elId={el.id} />
+        </div>
       </div>
     ));
   };
@@ -116,7 +139,7 @@ const CancelRefundForm = ({ bookData }) => {
       "paymentMode",
       "lastDigits",
       "refundAmt",
-      "refundAmtPrice1",
+      // "refundAmtPrice1",
       "phoneNumber",
       "bookedThrough",
       "agentName",
@@ -220,6 +243,7 @@ const CancelRefundForm = ({ bookData }) => {
             name="tfn"
             onChange={handleInpChange}
             value={formVal.tfn}
+            readOnly={true}
           />
         </div>
       </div>
@@ -275,7 +299,7 @@ const CancelRefundForm = ({ bookData }) => {
             onChange={handleInpChange}
             value={formVal.paymentMode}
           />
-          <span className="cm-helper-txt">Payment Mode</span>
+          <span className="cm-helper-txt">Payment Mode/Card Name</span>
         </div>
         <div className="cm-form-field">
           <label>Last 4 Digits of Card*</label>
@@ -287,7 +311,7 @@ const CancelRefundForm = ({ bookData }) => {
           />
         </div>
       </div>
-      <div className="cm-form-field-half cm-flex-type-2">
+      <div className="cm-form-field-full">
         <div className="cm-repeater-grp cm-form-field">
           <div className="cm-repeater-content">{renderFields()}</div>
           <div className="cm-repeater-btn cm-pass-repeat-btn">
@@ -299,8 +323,10 @@ const CancelRefundForm = ({ bookData }) => {
             </button>
           </div>
         </div>
+      </div>
+      <div className="cm-form-field-third cm-flex-type-2">
         <div className="cm-form-field">
-          <label>Refund Amt*</label>
+          <label>Total Refund Amt*</label>
           <input
             type="text"
             name="refundAmt"
@@ -309,10 +335,8 @@ const CancelRefundForm = ({ bookData }) => {
           />
           <span className="cm-helper-txt">Ex: 1061.20</span>
         </div>
-      </div>
-      <div className="cm-form-field-half cm-flex-type-2">
         <div className="cm-form-field">
-          <label>Refund Amt Price #1*</label>
+          <label>Refund Amt Price #1</label>
           <input
             type="text"
             name="refundAmtPrice1"
@@ -329,9 +353,22 @@ const CancelRefundForm = ({ bookData }) => {
             onChange={handleInpChange}
             value={formVal.refundAmtPrice2}
           />
-          <span className="cm-helper-txt">Ex: 25.00 USD</span>
+          <span className="cm-helper-txt">Ex: 25.00</span>
         </div>
       </div>
+
+      <div className="cm-form-field cm-checkbox-field cm-flex">
+        <input
+          type="checkbox"
+          name="showOnePayment"
+          onChange={(e) =>
+            setFormVal({ ...formVal, showOnePayment: e.target.checked })
+          }
+          value={formVal.showOnePayment}
+        />
+        <label>Show "Total Refund Amt" Only</label>
+      </div>
+
       <div className="cm-form-field-full">
         <div className="cm-form-field">
           <label>Phone Number*</label>

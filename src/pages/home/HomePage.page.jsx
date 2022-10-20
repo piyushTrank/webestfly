@@ -29,9 +29,11 @@ import girlImg from "../../assets/images/flight/girlImg.png";
 import { phoneNum } from "../../utils/globalVars";
 import discount from "../../assets/images/flight/discount.png";
 import umbrella from "../../assets/images/flight/umbrella.png";
+import { useSelector } from "react-redux";
 
 const HomePage = () => {
   const navigate = useNavigate();
+  // const phoneNum = useSelector((state) => state.misc.contact);
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -77,12 +79,14 @@ const HomePage = () => {
                   </p>
                   <h5 className="cm-lr-pad">
                     SAVE EXTRA $30* BY CALLING NOW:{" "}
-                    <a
-                      href={`tel:${phoneNum.value}`}
-                      className="cm-prim-bg cm-white-col"
-                    >
-                      {phoneNum.label}
-                    </a>
+                    {!!phoneNum ? (
+                      <a
+                        href={`tel:${phoneNum.value}`}
+                        className="cm-prim-bg cm-white-col"
+                      >
+                        {phoneNum.label}
+                      </a>
+                    ) : null}
                   </h5>
                 </div>
                 <div className="cm-middle-info cm-flex-type-2 cm-flex-align-in cm-flex-wrap">
@@ -134,12 +138,14 @@ const HomePage = () => {
             </div>
             <div className="cm-content">
               <p>Call Only Offer: Save up to $30 on Unpublished Deals: </p>
-              <a
-                href={`tel:${phoneNum.value}`}
-                className="cm-sec-bg cm-white-col"
-              >
-                {phoneNum.label}
-              </a>
+              {!!phoneNum ? (
+                <a
+                  href={`tel:${phoneNum.value}`}
+                  className="cm-sec-bg cm-white-col"
+                >
+                  {phoneNum.label}
+                </a>
+              ) : null}
             </div>
             <img src={girlImg} alt="Girl" className="cm-girl-img" />
           </div>

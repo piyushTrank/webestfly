@@ -1,13 +1,15 @@
 import React from "react";
 import "./CtaPopup.styles.css";
+import { useSelector } from "react-redux";
 
 import calling from "../../assets/images/flight/calling.png";
-
 import logo from "../../assets/images/flight/trian_fly_logo.png";
 import { phoneNum } from "../../utils/globalVars";
 
 const CtaPopup = ({ dataToSend }) => {
   const [ctaPopStatus, setCtaPopStatus] = React.useState(true);
+
+  // const phoneNum = useSelector((state) => state.misc.contact);
 
   return (
     <div
@@ -33,17 +35,21 @@ const CtaPopup = ({ dataToSend }) => {
         <img src={calling} alt="executive" />
         <div className="cm-content">
           <p>Call now and save upto 20%</p>
-          <h3>
-            <a className="cm-sec-col2" href={`tel:${phoneNum.value}`}>
-              {phoneNum.label}
-            </a>
-          </h3>
-          <a
-            className="cm-btn cm-sec-bg2 cm-white-col cm-wt-700 cm-btn-lg"
-            href={`tel:${phoneNum.value}`}
-          >
-            Call Now
-          </a>
+          {!!phoneNum ? (
+            <>
+              <h3>
+                <a className="cm-sec-col2" href={`tel:${phoneNum.value}`}>
+                  {phoneNum.label}
+                </a>
+              </h3>
+              <a
+                className="cm-btn cm-sec-bg2 cm-white-col cm-wt-700 cm-btn-lg"
+                href={`tel:${phoneNum.value}`}
+              >
+                Call Now
+              </a>
+            </>
+          ) : null}
         </div>
       </div>
     </div>
